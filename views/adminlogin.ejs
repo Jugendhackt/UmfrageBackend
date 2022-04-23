@@ -8,12 +8,16 @@
     <title>Administrator Login</title>
     <link rel="stylesheet" href="/css/adminlogin.css">
 </head>
-<body class="dark">
+<body class="">
 <h1>Administrator Login</h1>
-    <form method="post" target="/adminlogin">
-        <label for="password">Passwort:</label>
-        <input type="password" id="password" name="password">
-        <input type="submit" value="Login">
-    </form>
+<span id="togglebox" onclick="toggle()">
+    <span id="toggle" class="left"></span>
+</span>
+<form method="post" target="/adminlogin">
+    <label for="password">Passwort:</label>
+    <input type="password" id="password" name="password">
+    <input type="submit" value="Login">
+    <script src="/js/adminlogin.js"></script>
+</form>
 </body>
 </html>

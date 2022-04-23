@@ -55,6 +55,10 @@ app.get("/adminlogin", (req, res) => {
     res.render("adminlogin")
 })
 
+app.get("/admin", (req, res) => {
+    res.render("admin")
+})
+
 //404
 
 app.all("*", (req, res) => {
