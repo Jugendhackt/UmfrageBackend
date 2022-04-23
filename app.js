@@ -2,6 +2,8 @@
 const express = require('express');
 const app = express();
 const cookieParser = require('cookie-parser');
+const cors = require('cors');
+
 
 //For Forms
 app.use(express.json());
@@ -9,6 +11,7 @@ app.use(express.urlencoded({
     extended: true
 }));
 app.use(cookieParser());
+app.use(cors());
 
 app.set("view engine", "ejs");
 
@@ -16,20 +19,14 @@ app.use(express.static(__dirname + '/public'));
 
 const fs = require('fs');
 
-const result = require("./result.json")
+const data = require("./data.json");
+const result = require("./result.json");
 
 //get post create delete
 
 
 app.get("/", (req, res) => {
-    res.send({
-        title: "Geld Für Kuchenbasar",
-        answers: [
-            "Spenden",
-            "Mittag essen gegehn",
-            "Bowlen"
-        ]
-    });
+	res.send(data)
 })
 
 app.post("/answer", (req, res) => {
@@ -72,6 +69,47 @@ app.post("/adminlogin", (req, res) => {
     res.send({error:"incorrect password"})
 })
 
+app.post("/admin/new", (req, res) => { 
+    var json = req.body;
+    var question;
+    var answers = [];
+    var results = [];
+    var id = 0;
+    Object.keys(json).forEach(function(key) {
+        if (key == "question") {
+            question = json[key];
+        } else {
+            answers.push(json[key]);
+            results.push({"id":id, "votes":0});
+			id += 1;
+        }
+    })
+
+    if (answers.length == 0) {
+        res.send({error: "no answers"})
+    }
+
+    // clear results
+    fs.writeFile("./result.json", JSON.stringify(results), (err) => {
+        if (err) {
+            console.log(err)
+            res.send({error: `error: ${err}`})
+        }
+    })
+    fs.writeFile("./data.json", JSON.stringify({"question":question, "answers":answers}), (err) => {
+        if (err) {
+            console.log(err)
+            res.send({error: `error: ${err}`})
+        }
+    })
+
+    res.send({"status": "ok"})
+})
+
+
+app.get("/admin/new", (req, res) => {
+	res.render("NewQuestionnaire")
+})
 
 app.get("/admin", (req, res) => {
     res.render("admin")

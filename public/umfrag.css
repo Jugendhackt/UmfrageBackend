@@ -1,0 +1,18 @@
+h1 {
+  text-align: center;
+}
+
+form {
+  width: max-content;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid black;
+  border-radius: 5px;
+  padding: 0.5em 7em;
+}
+form input[type=submit] {
+  margin-bottom: 1em;
+}
+
+/*# sourceMappingURL=umfrag.css.map */
