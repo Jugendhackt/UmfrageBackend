@@ -14,6 +14,13 @@
   "scripts": {
     "test": "nodemon app.js"
   },
+  "nodemonConfig": {
+    "ignore": [
+      "result.json",
+      "data.json",
+      "datas.json"
+    ]
+  },
   "author": "",
   "license": "ISC"
 }

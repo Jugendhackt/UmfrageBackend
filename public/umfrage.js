@@ -1,4 +1,4 @@
-fetch("http://172.22.231.195:3000/")
+fetch("/questionnaire")
 .then(response => response.json())
 .then(json => {
     document.getElementById("question").innerHTML = json.question;

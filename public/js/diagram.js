@@ -3,7 +3,7 @@ let object = document.getElementById("chart");
 fetch("/result")
     .then(data => data.json())
     .then(json1 => {
-        fetch("/")
+        fetch("/questionnaire")
             .then(data => data.json())
             .then(json2 => create(json1, json2))
     })

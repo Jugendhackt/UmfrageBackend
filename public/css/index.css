@@ -1,0 +1,27 @@
+h1 {
+  text-align: center;
+}
+
+div {
+  display: flex;
+  flex-direction: column;
+}
+div a {
+  color: black;
+  text-decoration: none;
+  font-style: italic;
+}
+
+span img:nth-child(1) {
+  transform: rotate(-20deg);
+  position: absolute;
+  right: 3em;
+}
+span img:nth-child(2) {
+  transform: rotate(-20deg);
+  position: absolute;
+  right: 3em;
+  top: 15em;
+}
+
+/*# sourceMappingURL=index.css.map */

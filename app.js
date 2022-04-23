@@ -24,9 +24,12 @@ const result = require("./result.json");
 
 //get post create delete
 
-
 app.get("/", (req, res) => {
-	res.send(data)
+    res.render("index");
+});
+
+app.get("/questionnaire", (req, res) => {
+    res.send(data)
 })
 
 app.post("/answer", (req, res) => {
@@ -43,7 +46,7 @@ app.post("/answer", (req, res) => {
             res.send({error: `error: ${err}`})
         }
     })
-    res.send({"status": "ok"})
+    res.redirect("/Diagram.html")
 })
 
 app.get("/result", (req, res) => {
@@ -66,22 +69,22 @@ app.post("/adminlogin", (req, res) => {
         res.cookie("loggedIn", true).redirect("/")
     }
 
-    res.send({error:"incorrect password"})
+    res.send({error: "incorrect password"})
 })
 
-app.post("/admin/new", (req, res) => { 
+app.post("/admin/new", (req, res) => {
     var json = req.body;
     var question;
     var answers = [];
     var results = [];
     var id = 0;
-    Object.keys(json).forEach(function(key) {
+    Object.keys(json).forEach(function (key) {
         if (key == "question") {
             question = json[key];
         } else {
             answers.push(json[key]);
-            results.push({"id":id, "votes":0});
-			id += 1;
+            results.push({"id": id, "votes": 0});
+            id += 1;
         }
     })
 
@@ -96,19 +99,19 @@ app.post("/admin/new", (req, res) => {
             res.send({error: `error: ${err}`})
         }
     })
-    fs.writeFile("./data.json", JSON.stringify({"question":question, "answers":answers}), (err) => {
+    fs.writeFile("./data.json", JSON.stringify({"question": question, "answers": answers}), (err) => {
         if (err) {
             console.log(err)
             res.send({error: `error: ${err}`})
         }
     })
 
-    res.send({"status": "ok"})
+    res.redirect("/admin")
 })
 
 
 app.get("/admin/new", (req, res) => {
-	res.render("NewQuestionnaire")
+    res.render("NewQuestionnaire")
 })
 
 app.get("/admin", (req, res) => {
