@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Neue Umfrage</title>
+    <link rel="stylesheet" href="/css/darkmodetoggle.css">
+    <link rel="stylesheet" href="/css/NewQuestionnaire.css">
+    <script src="/js/lib/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<%- include("darkmodetoggle") %>
+<h1>Neue Umfrage</h1>
+<form>
+    <label>
+        <input type="text" name="question" placeholder="Frage">
+    </label>
+    <div id="answerContainer">
+        <button type="button" onclick="addAnswer()">Antwort Hinzufügen</button>
+        <table id="answerContainerTable"></table>
+        <span id="hiddenAnswerContainer" style="display: none"></span>
+    </div>
+</form>
+<script src="/js/NewQuestionnaire.js"></script>
+</body>
+</html>
