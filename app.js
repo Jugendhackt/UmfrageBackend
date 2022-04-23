@@ -2,6 +2,19 @@
 const express = require('express');
 const app = express();
 
+//For Forms
+app.use(express.json());
+app.use(express.urlencoded({
+    extended: true
+}));
+
+const fs = require('fs');
+
+const result = require("./result.json")
+
+//get post create delete
+
+
 app.get("/", (req, res) => {
     res.send({
         title: "Geld Für Kuchenbasar",
@@ -15,7 +28,23 @@ app.get("/", (req, res) => {
 
 app.post("/answer", (req, res) => {
     const answer = req.body.answer;
+    console.log(answer);
+    if (result[answer] == null) {
+        result[answer].votes = 1
+    } else {
+        result[answer].votes += 1
+    }
+    fs.writeFile("./result.json", JSON.stringify(result), (err) => {
+        if (err) {
+            console.log(err)
+            res.send({error: `error: ${err}`})
+        }
+    })
+    res.send({"status": "ok"})
+})
 
+app.get("/result", (req, res) => {
+    res.send(result)
 })
 
 app.all("*", (req, res) => {
