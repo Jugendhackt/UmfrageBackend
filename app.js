@@ -8,6 +8,10 @@ app.use(express.urlencoded({
     extended: true
 }));
 
+app.set("view engine", "ejs");
+
+app.use(express.static(__dirname + '/public'));
+
 const fs = require('fs');
 
 const result = require("./result.json")
@@ -46,6 +50,12 @@ app.post("/answer", (req, res) => {
 app.get("/result", (req, res) => {
     res.send(result)
 })
+
+app.get("/adminlogin", (req, res) => {
+    res.render("adminlogin")
+})
+
+//404
 
 app.all("*", (req, res) => {
     res.status(404);

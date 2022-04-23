@@ -1,0 +1,39 @@
+h1 {
+  text-align: center;
+  width: 100%;
+}
+
+form {
+  width: max-content;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+}
+form label {
+  margin-bottom: 1em;
+}
+form input[type=password] {
+  width: 15em;
+  margin-bottom: 0.5em;
+}
+
+.dark {
+  background-color: #3f3f3f;
+}
+.dark h1 {
+  color: wheat;
+}
+.dark form input {
+  background-color: #4f4f4f;
+  border-color: #2f2f2f;
+  color: #00a500;
+  font-weight: bold;
+}
+.dark form label {
+  color: #00a500;
+  font-weight: bold;
+}
+
+/*# sourceMappingURL=adminlogin.css.map */

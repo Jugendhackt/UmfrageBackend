@@ -4,6 +4,7 @@
   "description": "",
   "main": "app.js",
   "dependencies": {
+    "ejs": "^3.1.7",
     "express": "^4.17.3",
     "nodemon": "^2.0.15",
     "sqlite3": "^5.0.5"
