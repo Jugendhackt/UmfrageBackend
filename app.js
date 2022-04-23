@@ -1,12 +1,14 @@
 //init express project
 const express = require('express');
 const app = express();
+const cookieParser = require("cookie-parser")
 
 //For Forms
 app.use(express.json());
 app.use(express.urlencoded({
     extended: true
 }));
+app.use(cookieParser());
 
 app.set("view engine", "ejs");
 
@@ -52,8 +54,24 @@ app.get("/result", (req, res) => {
 })
 
 app.get("/adminlogin", (req, res) => {
+    if (res.cookie.loggedIn != null) {
+        res.send("already logged in")
+    }
     res.render("adminlogin")
 })
+
+app.post("/adminlogin", (req, res) => {
+    const password = req.body.password
+    console.log(password)
+
+    if (password === "verysecretpassword") {
+        console.log("the password is correct")
+        res.cookie("loggedIn", true).redirect("/")
+    }
+
+    res.send({error:"incorrect password"})
+})
+
 
 app.get("/admin", (req, res) => {
     res.render("admin")
