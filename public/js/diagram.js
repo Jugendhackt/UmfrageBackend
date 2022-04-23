@@ -32,7 +32,8 @@ function create(result, questions) {
                 legend: {
                     display: false
                 }
-            }
+            },
+			responsive: false
         }
     }
     let chart = new Chart(object, config)
