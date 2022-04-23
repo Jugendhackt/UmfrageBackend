@@ -17,14 +17,19 @@ app.use(express.static(__dirname + '/public'));
 const fs = require('fs');
 
 const result = require("./result.json")
-const data = require("./data.json")
 
 //get post create delete
 
 
 app.get("/", (req, res) => {
-	// TODO: fetch question
-	res.send(data)
+    res.send({
+        title: "Geld Für Kuchenbasar",
+        answers: [
+            "Spenden",
+            "Mittag essen gegehn",
+            "Bowlen"
+        ]
+    });
 })
 
 app.post("/answer", (req, res) => {
@@ -70,34 +75,6 @@ app.post("/adminlogin", (req, res) => {
 
 app.get("/admin", (req, res) => {
     res.render("admin")
-})
-
-app.post("/admin/new", (req, res) => { 
-	var json = req.body;
-	var question;
-	var answers = [];
-	Object.keys(json).forEach(function(key) {
-		if (key == "question") {
-			question = json[key]
-		} else {
-			answers.push(json[key])
-		}
-	})
-	
-	if (answers.length == 0) {
-		res.send({error: "no answers"})
-	}
-
-	// clear results
-	fs.unlinkSync("./result.json")
-    fs.writeFile("./data.json", JSON.stringify({"question":question, "answers":answers}), (err) => {
-        if (err) {
-            console.log(err)
-            res.send({error: `error: ${err}`})
-        }
-    })
-
-	res.send({"status": ok})
 })
 
 //404

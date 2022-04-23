@@ -6,9 +6,18 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Administrator Seite</title>
+    <link rel="stylesheet" href="/css/darkmodetoggle.css">
+    <link rel="stylesheet" href="/css/admin.css">
 </head>
 <body>
 <h1>Administrator Seite</h1>
-
+<%- include("darkmodetoggle")%>
+<div id="topButtonBar">
+    <span><button>Neue Gruppe</button></span>
+    <span><button onclick="document.location.href = '/admin/new'">Neue Umfrage</button></span>
+    <span><button>Umfrage beenden</button></span>
+    <span><button>Umfrage löschen</button></span>
+    <span><button>Gruppe löschen</button></span>
+</div>
 </body>
 </html>

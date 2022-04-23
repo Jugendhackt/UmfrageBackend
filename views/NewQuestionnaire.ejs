@@ -15,13 +15,14 @@
 <h1>Neue Umfrage</h1>
 <form>
     <label>
-        <input type="text" name="question" placeholder="Frage">
+        <input type="text" name="question" placeholder="Frage" required>
     </label>
     <div id="answerContainer">
         <button type="button" onclick="addAnswer()">Antwort Hinzufügen</button>
         <table id="answerContainerTable"></table>
         <span id="hiddenAnswerContainer" style="display: none"></span>
     </div>
+    <input type="submit" value="Bestätigen">
 </form>
 <script src="/js/NewQuestionnaire.js"></script>
 </body>
