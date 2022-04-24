@@ -7,7 +7,7 @@ fetch("/questionnaire")
     let index = 0
     json.answers.forEach(element => {
         console.log(element)
-        container.innerHTML += `<input type="radio" name="answer" value="${index}"/><span>${element}</span><br>`
+        container.innerHTML += `<input required type="radio" name="answer" value="${index}"/><span>${element}</span><br>`
         index++
     })
 })

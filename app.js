@@ -90,7 +90,7 @@ app.post("/admin/new", (req, res) => {
         }
     })
 
-    if (answers.length == 0) {
+    if (answers.length === 0) {
         res.send({error: "no answers"})
     }
 

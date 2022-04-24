@@ -13,7 +13,7 @@
 <body>
 <%- include("darkmodetoggle") %>
 <h1>Neue Umfrage</h1>
-<form method="post">
+<form method="post" onsubmit="check(event)">
     <label>
         <input type="text" name="question" placeholder="Frage" required>
     </label>
