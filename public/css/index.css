@@ -10,6 +10,16 @@ div a {
   color: black;
   text-decoration: none;
   font-style: italic;
+  margin-top: 1em;
+}
+div a:nth-child(1) {
+  margin-left: 4em;
+}
+div a:nth-child(2) {
+  margin-left: 8em;
+}
+div a:nth-child(3) {
+  margin-left: 12em;
 }
 
 span img:nth-child(1) {

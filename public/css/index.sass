@@ -9,6 +9,11 @@ div
     color: black
     text-decoration: none
     font-style: italic
+    margin-top: 1em
+
+    @for $i from 1 through 3
+      &:nth-child(#{$i})
+        margin-left: $i*4em
 
 span
   img:nth-child(1)
