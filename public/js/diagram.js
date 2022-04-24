@@ -33,7 +33,7 @@ function create(result, questions) {
                     display: false
                 }
             },
-			responsive: false
+			responsive: true
         }
     }
     let chart = new Chart(object, config)
