@@ -2,7 +2,7 @@ const express = require("express")
 const router = express.Router()
 
 router.all("/admin*", (req, res, next) => {
-    if (req.cookies.loggedIn) {
+    if (req.cookies.loggedIn === "true") {
         next()
     } else {
         if (req.path !== "/adminlogin")

@@ -8,10 +8,12 @@
     <title>Administrator Seite</title>
     <link rel="stylesheet" href="/css/darkmodetoggle.css">
     <link rel="stylesheet" href="/css/admin.css">
+    <script src="/js/admin.js"></script>
 </head>
 <body>
 <h1>Administrator Seite</h1>
 <%- include("darkmodetoggle")%>
+<button id="logout" onclick="logout()">Logout</button>
 <div id="topButtonBar">
     <span><button>Neue Gruppe</button></span>
     <span><button onclick="document.location.href = '/admin/new'">Neue Umfrage</button></span>

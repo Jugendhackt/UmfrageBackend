@@ -3,6 +3,7 @@ const express = require('express');
 const app = express();
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
+const authenticator = require('./Authenticator');
 
 
 //For Forms
@@ -16,11 +17,13 @@ app.use(cors());
 app.set("view engine", "ejs");
 
 app.use(express.static(__dirname + '/public'));
+app.use(authenticator)
 
 const fs = require('fs');
 
 const data = require("./data.json");
 const result = require("./result.json");
+const password = "password";
 
 //get post create delete
 
@@ -61,10 +64,9 @@ app.get("/adminlogin", (req, res) => {
 })
 
 app.post("/adminlogin", (req, res) => {
-    const password = req.body.password
-    console.log(password)
+    const inputtetPassword = req.body.password
 
-    if (password === "verysecretpassword") {
+    if (inputtetPassword === password) {
         console.log("the password is correct")
         res.cookie("loggedIn", true).redirect("/")
     }
