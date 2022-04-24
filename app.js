@@ -22,7 +22,7 @@ app.use(authenticator)
 const fs = require('fs');
 
 const data = require("./data.json");
-const result = require("./result.json");
+let result = require("./result.json");
 const password = "password";
 
 //get post create delete
@@ -69,39 +69,38 @@ app.post("/adminlogin", (req, res) => {
     if (inputtetPassword === password) {
         console.log("the password is correct")
         res.cookie("loggedIn", true).redirect("/")
-    }
-
-    res.send({error: "incorrect password"})
+    } else
+        res.send({error: "incorrect password"})
 })
 
 app.post("/admin/new", (req, res) => {
     var json = req.body;
     var question;
     var answers = [];
-    var results = [];
+    result = [];
     var id = 0;
     Object.keys(json).forEach(function (key) {
-        if (key == "question") {
+        if (key === "question") {
             question = json[key];
         } else {
             answers.push(json[key]);
-            results.push({"id": id, "votes": 0});
+            result.push({"id": id, "votes": 0});
             id += 1;
         }
     })
 
-    if (answers.length == 0) {
-        res.send({error: "no answers"})
-    }
-
     // clear results
-    fs.writeFile("./result.json", JSON.stringify(results), (err) => {
+    fs.writeFile("./result.json", JSON.stringify(result), (err) => {
         if (err) {
             console.log(err)
             res.send({error: `error: ${err}`})
         }
     })
-    fs.writeFile("./data.json", JSON.stringify({"question": question, "answers": answers}), (err) => {
+
+    data.question = question;
+    data.answers = answers;
+
+    fs.writeFile("./data.json", JSON.stringify(data), (err) => {
         if (err) {
             console.log(err)
             res.send({error: `error: ${err}`})
