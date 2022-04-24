@@ -68,10 +68,11 @@ app.post("/adminlogin", (req, res) => {
 
     if (inputtetPassword === password) {
         console.log("the password is correct")
-        res.cookie("loggedIn", true).redirect("/")
+        res.cookie("loggedIn", true).redirect("/admin")
+		return
     }
 
-    res.send({error: "incorrect password"})
+    res.redirect("/adminlogin")
 })
 
 app.post("/admin/new", (req, res) => {
