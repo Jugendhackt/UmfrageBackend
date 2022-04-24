@@ -37,7 +37,6 @@ app.get("/questionnaire", (req, res) => {
 
 app.post("/answer", (req, res) => {
     const answer = req.body.answer;
-    console.log(answer);
     if (result[answer] == null) {
         result[answer].votes = 1
     } else {
@@ -54,6 +53,10 @@ app.post("/answer", (req, res) => {
 
 app.get("/result", (req, res) => {
     res.send(result)
+})
+
+app.get("/try", (req, res) => {
+	res.redirect("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
 })
 
 app.get("/adminlogin", (req, res) => {
