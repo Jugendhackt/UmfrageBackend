@@ -34,4 +34,10 @@ span img:nth-child(2) {
   top: 20em;
 }
 
+p {
+  position: absolute;
+  bottom: 1em;
+  left: 1em;
+}
+
 /*# sourceMappingURL=index.css.map */
